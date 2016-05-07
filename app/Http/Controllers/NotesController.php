@@ -9,26 +9,17 @@ use App\Note;
 class NotesController extends Controller
 {
    	public function store(Request $request, Card $card)
-
-//		public function store()
 	{
-//		return $request->all();
-//		return \Request::all();
-//		return request()->all();
 
-//	return $card;
-// latest
-//			$note = new Note;
-//			$note->body = $request->body;
-//			$card->notes()->save($note);
+		$note = new Note($request->all());
+//		$note->by(Auth::user());
+		$note->user_id = 1;
 
-//		$note = new Note;
-//                      $note->body = $request->body;
-//                      $card->notes()->save($note);
-
-	$card->addNote(
-		new Note($request->all())
-	);
+//		$card->AddNote($note, $user);
+		$card->AddNote($note, 1);
+//		$card->addNote(
+//			new Note($request->all())
+//		);
 
 		return back();
 	}
