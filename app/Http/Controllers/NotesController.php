@@ -11,15 +11,12 @@ class NotesController extends Controller
    	public function store(Request $request, Card $card)
 	{
 
-		$note = new Note($request->all());
-//		$note->by(Auth::user());
-		$note->user_id = 1;
+		$this->validate($request, [
+			'body' => 'required|min:10'
+		]);
 
-//		$card->AddNote($note, $user);
+		$note = new Note($request->all());
 		$card->AddNote($note, 1);
-//		$card->addNote(
-//			new Note($request->all())
-//		);
 
 		return back();
 	}
