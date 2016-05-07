@@ -38,9 +38,10 @@ class NotesController extends Controller
 	{
 		return view('notes.edit', compact('note'));
 	}
-	public function update(Note $note)
+	public function update(Request $request, Note $note)
 	{
-
+		$note->update($request->all());
+		return back();
 	}
 
 }
